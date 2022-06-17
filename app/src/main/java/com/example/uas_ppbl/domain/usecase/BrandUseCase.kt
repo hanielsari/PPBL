@@ -1,11 +1,13 @@
 package com.example.uas_ppbl.domain.usecase
 
 import com.example.uas_ppbl.data.model.PhoneSpecification.PhoneSpecifications
+import com.example.uas_ppbl.data.model.Search.PhoneDataResponse
 import com.example.uas_ppbl.data.model.Search.Search
 import com.example.uas_ppbl.data.model.brand.BrandList
 import com.example.uas_ppbl.data.model.device.DeviceList
 import com.example.uas_ppbl.data.model.device.Phone
 import com.example.uas_ppbl.data.model.latest.Latest
+import com.example.uas_ppbl.data.model.tophandphone.TopHandphone
 import com.example.uas_ppbl.data.util.Resource
 import com.example.uas_ppbl.domain.repository.BrandRepository
 import kotlinx.coroutines.flow.Flow
@@ -37,12 +39,17 @@ class DeleteSaveDeviceUseCase(private val brandRepository: BrandRepository) {
 }
 
 class GetSearchDeviceUseCase(private val brandRepository: BrandRepository) {
-     suspend fun execute(searchQuery: String): Resource<Search> {
+    suspend fun execute(searchQuery: String): Resource<Search> {
         return brandRepository.getSearchDevice(searchQuery)
     }
 }
 class GetLatestDeviceUseCase(private val brandRepository: BrandRepository) {
     suspend fun execute(): Resource<Latest> {
         return brandRepository.getLatest()
+    }
+}
+class GetTopHandphoneUseCase(private val brandRepository: BrandRepository) {
+    suspend fun execute(): Resource<TopHandphone> {
+        return brandRepository.getToHandphone()
     }
 }

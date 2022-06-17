@@ -22,6 +22,9 @@
         <argument
             android:name="selected_brand"
             app:argType="com.example.uas_ppbl.data.model.brand.Brand" />
+        <action
+            android:id="@+id/action_deviceFragment_to_spesifikasiFragment"
+            app:destination="@id/spesifikasiFragment" />
     </fragment>
     <fragment
         android:id="@+id/saveFragment"
@@ -42,4 +45,13 @@
         android:name="com.example.uas_ppbl.LatestFragment"
         android:label="fragment_lastest"
         tools:layout="@layout/fragment_lastest" />
+    <fragment
+        android:id="@+id/spesifikasiFragment"
+        android:name="com.example.uas_ppbl.SpesifikasiFragment"
+        android:label="fragment_spesifikasi"
+        tools:layout="@layout/fragment_spesifikasi" >
+        <argument
+            android:name="selected_hp"
+            app:argType="com.example.uas_ppbl.data.model.PhoneSpecification.Data" />
+    </fragment>
 </navigation>

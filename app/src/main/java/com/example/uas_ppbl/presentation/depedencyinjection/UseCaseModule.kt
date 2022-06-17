@@ -1,10 +1,7 @@
 package com.example.uas_ppbl.presentation.depedencyinjection
 
 import com.example.uas_ppbl.domain.repository.BrandRepository
-import com.example.uas_ppbl.domain.usecase.GetBrandUseCase
-import com.example.uas_ppbl.domain.usecase.GetDeviceUseCase
-import com.example.uas_ppbl.domain.usecase.GetLatestDeviceUseCase
-import com.example.uas_ppbl.domain.usecase.GetSearchDeviceUseCase
+import com.example.uas_ppbl.domain.usecase.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,5 +32,10 @@ class UseCaseModule {
     @Provides
     fun provideGetLatestDeviceUseCase(brandRepository: BrandRepository) : GetLatestDeviceUseCase{
         return GetLatestDeviceUseCase(brandRepository)
+    }
+    @Singleton
+    @Provides
+    fun provideGetTopHandphone(brandRepository: BrandRepository) : GetTopHandphoneUseCase {
+        return GetTopHandphoneUseCase(brandRepository)
     }
 }

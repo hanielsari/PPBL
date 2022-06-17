@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <item
         android:id="@+id/brandFragment"
         android:icon="@drawable/ic_baseline_phone_android_24"
@@ -19,4 +20,9 @@
         android:id="@+id/lastestFragment"
         android:icon="@drawable/ic_baseline_last_page_24"
         android:title="Latest" />
+
+    <item
+        android:id="@+id/topByInteresFragment"
+        android:icon="@drawable/ic_baseline_star_outline_24"
+        android:title="TopInterst" />
 </menu>

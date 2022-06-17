@@ -52,9 +52,12 @@ class DeviceFragment : Fragment() {
         binding.rvDevice.apply {
             adapter = deviceAdapter
             layoutManager = GridLayoutManager(activity,2)
-//            if(brands.brandSlug == device.title ){
-//                return viewDeviceList()
-//            }
+            deviceAdapter.setOnItemListener  {device->
+                val bundle = Bundle().apply {
+                    putSerializable("selected_hp", device)
+                }
+                findNavController().navigate(R.id.action_deviceFragment_to_spesifikasiFragment, bundle)
+            }
         }
     }
 
@@ -73,7 +76,7 @@ class DeviceFragment : Fragment() {
                 is Resource.Success -> {
                     hidePBar()
                     response.data?.let {
-                        deviceAdapter.differ.submitList(it.device?.phones?.toList())
+                        deviceAdapter.differ.submitList(it.device?.phones)
 //                        Log.d("TAG",it.device?.phones.toString())
                     }
                 }

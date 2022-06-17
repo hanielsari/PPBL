@@ -1,10 +1,7 @@
 package com.example.uas_ppbl.presentation.depedencyinjection
 
 import com.example.uas_ppbl.data.model.device.Phone
-import com.example.uas_ppbl.presentation.adapter.BrandsAdapter
-import com.example.uas_ppbl.presentation.adapter.DeviceAdapter
-import com.example.uas_ppbl.presentation.adapter.LatestAdapter
-import com.example.uas_ppbl.presentation.adapter.SearchAdapter
+import com.example.uas_ppbl.presentation.adapter.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,5 +31,10 @@ class AdapterModule {
     @Provides
     fun provideLatestAdapter() : LatestAdapter{
         return LatestAdapter()
+    }
+    @Singleton
+    @Provides
+    fun provideTopHandphone() : TopHandponeAdapter {
+        return TopHandponeAdapter()
     }
 }

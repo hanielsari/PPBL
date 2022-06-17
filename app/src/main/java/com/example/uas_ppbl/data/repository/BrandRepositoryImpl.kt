@@ -1,12 +1,14 @@
 package com.example.uas_ppbl.data.repository
 
 import com.example.uas_ppbl.data.model.PhoneSpecification.PhoneSpecifications
+import com.example.uas_ppbl.data.model.Search.PhoneDataResponse
 import com.example.uas_ppbl.data.model.Search.Search
 import com.example.uas_ppbl.data.model.brand.BrandList
 import com.example.uas_ppbl.data.model.device.Device
 import com.example.uas_ppbl.data.model.device.DeviceList
 import com.example.uas_ppbl.data.model.device.Phone
 import com.example.uas_ppbl.data.model.latest.Latest
+import com.example.uas_ppbl.data.model.tophandphone.TopHandphone
 import com.example.uas_ppbl.data.repository.datasource.BrandRemoteDataSource
 import com.example.uas_ppbl.data.util.Resource
 import com.example.uas_ppbl.domain.repository.BrandRepository
@@ -14,8 +16,8 @@ import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 
 class BrandRepositoryImpl (
-   private val brandRemoteDataSource: BrandRemoteDataSource
-        ): BrandRepository {
+    private val brandRemoteDataSource: BrandRemoteDataSource
+): BrandRepository {
     private fun responseToResourceBrand(response: Response<BrandList>): Resource<BrandList> {
         if (response.isSuccessful){
             response.body()?.let {
@@ -57,6 +59,14 @@ class BrandRepositoryImpl (
         }
         return Resource.Error(response.message())
     }
+    private fun responseToTopHandphone(response: Response<TopHandphone>): Resource<TopHandphone>{
+        if (response.isSuccessful){
+            response.body()?.let {
+                return Resource.Success(it)
+            }
+        }
+        return Resource.Error(response.message())
+    }
     override suspend fun getListBrand(): Resource<BrandList> {
         return responseToResourceBrand(brandRemoteDataSource.getListBrand())
     }
@@ -73,6 +83,9 @@ class BrandRepositoryImpl (
         return responseToResourceSearch(brandRemoteDataSource.getSearchDevice(searchQuery))
     }
 
+    override suspend fun getToHandphone(): Resource<TopHandphone> {
+        return responseToTopHandphone((brandRemoteDataSource.getTopHandphone()))
+    }
 
 
     override suspend fun saveDevice(phone: Phone) {
