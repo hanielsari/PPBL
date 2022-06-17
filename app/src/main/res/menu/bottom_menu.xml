@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/brandFragment"
+        android:icon="@drawable/ic_baseline_phone_android_24"
+        android:title="Brand" />
+    <item
+        android:id="@+id/saveFragment"
+        android:icon="@drawable/ic_baseline_save_24"
+        android:title="Saved Device" />
+
+    <item
+        android:id="@+id/searchFragment"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Search" />
+
+    <item
+        android:id="@+id/lastestFragment"
+        android:icon="@drawable/ic_baseline_last_page_24"
+        android:title="Latest" />
+</menu>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/brandFragment">
+
+    <fragment
+        android:id="@+id/brandFragment"
+        android:name="com.example.uas_ppbl.BrandFragment"
+        android:label="fragment_brand"
+        tools:layout="@layout/fragment_brand" >
+        <action
+            android:id="@+id/action_brandFragment_to_deviceFragment"
+            app:destination="@id/deviceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deviceFragment"
+        android:name="com.example.uas_ppbl.DeviceFragment"
+        android:label="fragment_device"
+        tools:layout="@layout/fragment_device" >
+        <argument
+            android:name="selected_brand"
+            app:argType="com.example.uas_ppbl.data.model.brand.Brand" />
+    </fragment>
+    <fragment
+        android:id="@+id/saveFragment"
+        android:name="com.example.uas_ppbl.SaveFragment"
+        android:label="fragment_save"
+        tools:layout="@layout/fragment_save" >
+        <action
+            android:id="@+id/action_saveFragment_to_deviceFragment"
+            app:destination="@id/deviceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.uas_ppbl.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/lastestFragment"
+        android:name="com.example.uas_ppbl.LatestFragment"
+        android:label="fragment_lastest"
+        tools:layout="@layout/fragment_lastest" />
+</navigation>
